@@ -5,13 +5,21 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/health', function () {
+    return response()->json([
+        'status' => 'ok',
+        'server' => gethostname(),
+        'timestamp' => now(),
+    ], 200);
+});
+
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 
 
-Route::get('/products',[ProductController::class,'index'])->middleware('checkAuth:admin');
-Route::get('/products/{product_id}',[ProductController::class,'show'])->middleware('checkAuth:admin');
+Route::get('/products', [ProductController::class, 'index'])->middleware('checkAuth:admin');
+Route::get('/products/{product_id}', [ProductController::class, 'show'])->middleware('checkAuth:admin');
 
 #shoul add admin middleware
 Route::post('/products', [ProductController::class, 'addProduct']);
@@ -23,4 +31,3 @@ Route::post('/order/{product_id}', [OrderController::class, 'createOrder']);
 Route::post('/orders/{order_id}/confirm-broken', [OrderController::class, 'confirmOrderBroken']);
 Route::post('/orders/{order_id}/confirm-fixed', [OrderController::class, 'confirmOrderFixed']);
 Route::get('/orders/{order_id}', [OrderController::class, 'showOrder']);
-
