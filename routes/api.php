@@ -9,14 +9,6 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 
-<<<<<<< Updated upstream
-Route::get('/products',[ProductController::class,'index']);
-
-
-
-Route::post('/orders', [OrderController::class, 'store']);
-Route::get('/orders/{id}', [OrderController::class, 'show']);
-=======
 Route::get('/products', [ProductController::class, 'index'])->middleware('checkAuth:admin');
 Route::get('/products/{product_id}', [ProductController::class, 'show'])->middleware('checkAuth:admin');
 
@@ -41,4 +33,3 @@ Route::get('/products-search-broken', [ProductController::class, 'searchBroken']
 Route::middleware(['throttle:product_search'])->group(function () {
     Route::get('/products-search-fixed', [ProductController::class, 'searchFixed']);
 });
->>>>>>> Stashed changes
