@@ -17,6 +17,14 @@ Route::post('/products', [ProductController::class, 'addProduct']);
 Route::post('/products/{product_id}/stock', [ProductController::class, 'addToStock']);
 
 
+
+#Task 1
+Route::post('/order/{product_id}', [OrderController::class, 'createOrder']);
+Route::post('/orders/{order_id}/confirm-broken', [OrderController::class, 'confirmOrderBroken']);
+Route::post('/orders/{order_id}/confirm-fixed', [OrderController::class, 'confirmOrderFixed']);
+Route::get('/orders/{order_id}', [OrderController::class, 'showOrder']);
+
+
 #Task 1
 Route::post('/order/{product_id}', [OrderController::class, 'createOrder']);
 Route::post('/orders/{order_id}/confirm-broken', [OrderController::class, 'confirmOrderBroken']);
@@ -48,4 +56,10 @@ Route::get('/products-search-broken', [ProductController::class, 'searchBroken']
 Route::middleware(['throttle:product_search'])->group(function () {
 Route::get('/products-search-fixed', [ProductController::class, 'searchFixed']);
 });
+
+
+# role 3
+Route::post('/orders/{order_id}/confirm-broken-async', [OrderController::class, 'confirmOrderBrokenAsync']);
+Route::post('/orders/{order_id}/confirm-fixed-async',  [OrderController::class, 'confirmOrderFixedAsync']);
+
 

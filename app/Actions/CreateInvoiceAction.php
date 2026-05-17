@@ -8,7 +8,6 @@ class CreateInvoiceAction
 {
     public function execute(Order $order)
     {
-        // حاليا فقط log
         Log::info("Invoice created for order {$order->id}");
     }
 }
