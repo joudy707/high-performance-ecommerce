@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class DailySale extends Model
 {
-    /** @use HasFactory<\Database\Factories\DailySaleFactory> */
-    use HasFactory;
+    protected $table = 'daily_sales';
+
     protected $fillable = [
-        'date',
-        'total_orders',
-        'total_revenue',
-    ];
+    'date',
+    'total_orders',
+    'total_revenue',
+    'total_items_sold',
+    'total_net_profit',
+];
 }
