@@ -13,7 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
 
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'checkAuth' => \App\Http\Middleware\CheckAuthorization::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
