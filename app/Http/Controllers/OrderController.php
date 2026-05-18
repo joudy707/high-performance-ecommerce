@@ -150,7 +150,8 @@ class OrderController extends Controller
 
             // stock before
             $stockBefore = $product->stock;
-
+              // // simulate processing delay
+            sleep(3);
             // check stock
             if ($product->stock < $item->quantity) {
                 return response()->json([
@@ -159,8 +160,7 @@ class OrderController extends Controller
                 ], 400);
             }
 
-            // // simulate processing delay
-            sleep(3);
+          
 
             // naive stock update
             $product->stock = $product->stock - $item->quantity;

@@ -36,7 +36,8 @@ class ProductSeeder extends Seeder
                 $n = $offset + $i;
                 $rows[] = [
                     'name' => 'product ' . $n . ' phone pro new',
-                    'price' => random_int(10, 500),
+                    'price' => $price = random_int(10, 500),
+                    'cost_price' => round($price * mt_rand(50,75)/100,2),
                     'stock' => 100000,
                     'created_at' => $now,
                     'updated_at' => $now,
