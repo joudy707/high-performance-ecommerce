@@ -12,7 +12,7 @@ class ProductController extends Controller
     {
         return response()->json(
             Product::query()
-                ->select('id', 'name', 'price', 'stock')
+                ->select('id', 'name', 'price', 'cost_price','stock')
                 ->paginate(25)
         );
     }
@@ -40,7 +40,7 @@ class ProductController extends Controller
         $q = strtolower((string) $request->query('q', ''));
 
         $products = Product::query()
-            ->select('id', 'name', 'price', 'stock')
+            ->select('id', 'name', 'price','cost_price','stock')
             ->get()
             ->filter(fn ($product) => str_contains(strtolower($product->name), $q))
             ->values();
@@ -68,7 +68,7 @@ class ProductController extends Controller
         $limit = (int) $request->query('limit', 20);
 
         $products = Product::query()
-            ->select('id', 'name', 'price', 'stock')
+            ->select('id', 'name', 'price', 'cost_price','stock')
             ->when($q !== '', fn ($query) => $query->where('name', 'like', $q . '%'))
             ->orderBy('id')
             ->limit($limit)
@@ -118,6 +118,7 @@ class ProductController extends Controller
     $validator = Validator::make($request->all(), [
         'name' => 'required|string|max:255',
         'price' => 'required|numeric|min:1',
+        'cost_price'=> 'required|numeric|min:1',
         'stock' => 'required|integer|min:0'
     ]);
 
@@ -128,6 +129,7 @@ class ProductController extends Controller
     $product = Product::create([
         'name' => $request->name,
         'price' => $request->price,
+         'cost_price'=> $request->cost_price,
         'stock' => $request->stock,
     ]);
 

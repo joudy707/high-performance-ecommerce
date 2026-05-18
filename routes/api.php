@@ -7,15 +7,29 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SalesController;
 use App\Jobs\GenerateDailySalesReport;
+use Illuminate\Support\Facades\Cache;
+
+Route::get('/health', function () {
+    return response()->json([
+        'status' => 'ok',
+        'server' => gethostname(),
+        'timestamp' => now(),
+    ], 200);
+});
 
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 
+
 Route::get('/products',[ProductController::class,'index'])->middleware('checkAuth:admin');
 Route::get('/products/{product_id}',[ProductController::class,'show'])->middleware('checkAuth:admin');
 
-#shoul add admin middleware
+
+Route::get('/products', [ProductController::class, 'index'])->middleware('checkAuth:admin');
+Route::get('/products/{product_id}', [ProductController::class, 'show'])->middleware('checkAuth:admin');
+
+
 Route::post('/products', [ProductController::class, 'addProduct']);
 Route::post('/products/{product_id}/stock', [ProductController::class, 'addToStock']);
 
@@ -25,6 +39,7 @@ Route::post('/order/{product_id}', [OrderController::class, 'createOrder']);
 Route::post('/orders/{order_id}/confirm-broken', [OrderController::class, 'confirmOrderBroken']);
 Route::post('/orders/{order_id}/confirm-fixed', [OrderController::class, 'confirmOrderFixed']);
 Route::get('/orders/{order_id}', [OrderController::class, 'showOrder']);
+
 
 
 #Task 1
@@ -77,5 +92,3 @@ Route::post('/sales/report/generate', function () {
     GenerateDailySalesReport::dispatch();
     return response()->json(['message' => 'Report generation started. Workers are processing chunks in parallel.']);
 });
-
-

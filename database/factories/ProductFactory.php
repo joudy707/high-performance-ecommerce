@@ -10,18 +10,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ProductFactory extends Factory
 {
-<<<<<<< HEAD
+
     protected $model = Product::class;
 
-    public function definition(): array
-    {
-        return [
-            'name' => 'product ' . fake()->unique()->numberBetween(1, 999999) . ' phone pro new',
-            'price' => fake()->randomFloat(2, 10, 500),
-            'stock' => fake()->numberBetween(100, 100000),
-        ];
-    }
-=======
     /**
      * Define the model's default state.
      *
@@ -38,5 +29,5 @@ class ProductFactory extends Factory
         'cost_price' => round($price * $this->faker->randomFloat(2, 0.5, 0.75), 2),
     ];
 }
->>>>>>> origin/feature/batch
+
 }

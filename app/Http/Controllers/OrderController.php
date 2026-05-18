@@ -136,11 +136,7 @@ class OrderController extends Controller
             ], 400);
         }
 
-        /*
-    |--------------------------------------------------------------------------
-    | BROKEN VERSION (Intentional Race Condition)
-    |--------------------------------------------------------------------------
-    */
+
         $stockChanges = [];
         foreach ($items as $item) {
 
@@ -163,8 +159,8 @@ class OrderController extends Controller
                 ], 400);
             }
 
-            // simulate processing delay
-            sleep(5);
+            // // simulate processing delay
+            sleep(3);
 
             // naive stock update
             $product->stock = $product->stock - $item->quantity;
@@ -177,10 +173,8 @@ class OrderController extends Controller
                 'stock_after' => $product->stock
             ];
         }
-        $stockAfter = $product->stock;
         // confirm order
         $order->status = 'paid';
-
         $order->save();
 
         return response()->json([
@@ -193,88 +187,58 @@ class OrderController extends Controller
 
     public function confirmOrderFixed($order_id)
     {
-
         $user = Auth::guard('api')->user();
 
         if (!$user) {
-            return response()->json([
-                'message' => 'Unauthorized'
-            ], 401);
+            return response()->json(['message' => 'Unauthorized'], 401);
         }
 
-        return DB::transaction(function () use ($order_id, $user) {
+        // نتحقق من الطلب وعناصره خارج الترانزاكشن لتخفيف العبء على قاعدة البيانات
+        $order = Order::where('id', $order_id)
+            ->where('user_id', $user->id)
+            ->where('status', 'pending')
+            ->first();
 
-            /*
-        |--------------------------------------------------------------------------
-        | Find Pending Order
-        |--------------------------------------------------------------------------
-        */
+        if (!$order) {
+            return response()->json(['message' => 'order not found'], 404);
+        }
 
-            $order = Order::where('id', $order_id)
-                ->where('user_id', $user->id)
-                ->where('status', 'pending')
-                ->first();
+        $items = OrderItems::where('order_id', $order->id)->get();
 
-            if (!$order) {
-                return response()->json([
-                    'message' => 'order not found'
-                ], 404);
-            }
+        if ($items->isEmpty()) {
+            return response()->json(['message' => 'order is empty'], 400);
+        }
 
-            /*
-        |--------------------------------------------------------------------------
-        | Get Order Items
-        |--------------------------------------------------------------------------
-        */
+        // بدء الترانزاكشن اليدوي لإدارة الـ Rollback بدقة
+        DB::beginTransaction();
 
-            $items = OrderItems::where('order_id', $order->id)->get();
-
-            if ($items->isEmpty()) {
-                return response()->json([
-                    'message' => 'order is empty'
-                ], 400);
-            }
-
-            /*
-        |--------------------------------------------------------------------------
-        | FIXED VERSION USING TRANSACTION + ROW LOCKING
-        |--------------------------------------------------------------------------
-        */
+        try {
             $stockChanges = [];
             foreach ($items as $item) {
 
-                // lock product row
+                // قفل السطر الخاص بالمنتج لمنع أي عملية متزامنة من تعديله أو قراءته
                 $product = Product::where('id', $item->product_id)
                     ->lockForUpdate()
                     ->first();
 
                 if (!$product) {
-                    return response()->json([
-                        'message' => 'product not found'
-                    ], 404);
+                    DB::rollBack(); // تراجع عن كل شيء قبل الخروج
+                    return response()->json(['message' => 'product not found'], 404);
                 }
 
                 $stockBefore = $product->stock;
 
-                // validate stock safely
                 if ($product->stock < $item->quantity) {
-
+                    DB::rollBack(); // تراجع إجباري حتى لا تُخصم عناصر المنتجات السابقة بالـ loop
                     return response()->json([
                         'message' => 'not enough stock',
                         'product_id' => $product->id
                     ], 400);
                 }
 
-                /*
-            |--------------------------------------------------------------------------
-            | Safe Stock Update
-            |--------------------------------------------------------------------------
-            */
-
-                $product->stock =
-                    $product->stock - $item->quantity;
-
+                $product->stock = $product->stock - $item->quantity;
                 $product->save();
+
                 $stockChanges[] = [
                     'product_id' => $product->id,
                     'product_name' => $product->name,
@@ -284,28 +248,25 @@ class OrderController extends Controller
                 ];
             }
 
-            /*
-        |--------------------------------------------------------------------------
-        | Confirm Order
-        |--------------------------------------------------------------------------
-        */
-            $stockAfter = $product->stock;
             $order->status = 'paid';
-
             $order->save();
 
+            // اعتماد التغييرات نهائياً بعد نجاح كل العمليات
+            DB::commit();
+
             return response()->json([
-                'message' => 'order confirmed successfully',
+                'message' => 'order confirmed successfully and safely',
                 'order_id' => $order->id,
                 'status' => $order->status,
                 'stock_changes' => $stockChanges
             ], 200);
-        });
-
-        return response()->json(
-            Order::with('items')->findOrFail($id)
-        );
-
+        } catch (\Exception $e) {
+            DB::rollBack(); // تراجع فوري عند حدوث أي خطأ غير متوقع بالسيستم
+            return response()->json([
+                'message' => 'An error occurred during confirmation',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     public function showOrder($order_id)
@@ -360,11 +321,11 @@ class OrderController extends Controller
         $startTime = microtime(true);
 
         Log::info("[BROKEN-ASYNC] Starting SYNCHRONOUS invoice for Order #{$order->id}");
-        sleep(3); 
+        sleep(3);
         app(CreateInvoiceAction::class)->execute($order);
 
         Log::info("[BROKEN-ASYNC] Starting SYNCHRONOUS notification for Order #{$order->id}");
-        sleep(2); 
+        sleep(2);
         app(SendNotificationAction::class)->execute($order);
 
         $elapsed = round((microtime(true) - $startTime) * 1000); // ms
@@ -374,7 +335,7 @@ class OrderController extends Controller
             'order_id'        => $order->id,
             'status'          => $order->status,
             'processing_mode' => 'synchronous',
-            'response_time_ms'=> $elapsed,
+            'response_time_ms' => $elapsed,
             'note'            => 'User waited for invoice + notification inside the request. Total ~5s.'
         ], 200);
     }
@@ -406,8 +367,7 @@ class OrderController extends Controller
         return response()->json([
             'message'         => 'order confirmed (FIXED - async)',
             'order_id'        => $order->id,
-            'status'          => $order->status,           
+            'status'          => $order->status,
         ], 200);
     }
 }
-

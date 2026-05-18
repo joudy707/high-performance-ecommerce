@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedInteger('stock'); 
             $table->index('stock'); // فهرسة المخزن لسهولة البحث
             $table->timestamps();
-            $table->decimal('cost_price', 10, 2)->default(0); //////////////////
+    
         });
     }
 
