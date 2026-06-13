@@ -22,8 +22,8 @@ Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 
 
-Route::get('/products',[ProductController::class,'index'])->middleware('checkAuth:admin');
-Route::get('/products/{product_id}',[ProductController::class,'show'])->middleware('checkAuth:admin');
+Route::get('/products', [ProductController::class, 'index'])->middleware('checkAuth:admin');
+Route::get('/products/{product_id}', [ProductController::class, 'show'])->middleware('checkAuth:admin');
 
 
 Route::get('/products', [ProductController::class, 'index'])->middleware('checkAuth:admin');
@@ -63,15 +63,19 @@ Route::post('/orders/{order_id}/confirm-broken', [OrderController::class, 'confi
 Route::post('/orders/{order_id}/confirm-fixed', [OrderController::class, 'confirmOrderFixed']);
 Route::get('/orders/{order_id}', [OrderController::class, 'showOrder']);
 
+#Task 8
+Route::post('/orders/{order_id}/confirm-broken-acid', [OrderController::class, 'confirmOrderBrokenACID']);
+Route::post('/orders/{order_id}/confirm-fixed-acid', [OrderController::class, 'confirmOrderFixedACID']);
+
 // Task 2 - resource-management comparison: add to cart
 Route::post('/cart/{product_id}/add-broken', [CartController::class, 'addToCartBroken']);
 Route::middleware(['throttle:cart_write'])->group(function () {
-Route::post('/cart/{product_id}/add-fixed', [CartController::class, 'addToCartFixed']);
+    Route::post('/cart/{product_id}/add-fixed', [CartController::class, 'addToCartFixed']);
 });
 // Task 2 - resource-management comparison: search 
 Route::get('/products-search-broken', [ProductController::class, 'searchBroken']);
 Route::middleware(['throttle:product_search'])->group(function () {
-Route::get('/products-search-fixed', [ProductController::class, 'searchFixed']);
+    Route::get('/products-search-fixed', [ProductController::class, 'searchFixed']);
 });
 
 

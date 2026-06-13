@@ -8,6 +8,7 @@ use App\Jobs\ProcessInvoiceJob;
 use App\Jobs\SendNotificationJob;
 use App\Models\Order;
 use App\Models\OrderItems;
+use App\Models\Payment;
 use App\Models\Product;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
@@ -150,7 +151,7 @@ class OrderController extends Controller
 
             // stock before
             $stockBefore = $product->stock;
-              // // simulate processing delay
+            // // simulate processing delay
             sleep(3);
             // check stock
             if ($product->stock < $item->quantity) {
@@ -160,7 +161,7 @@ class OrderController extends Controller
                 ], 400);
             }
 
-          
+
 
             // naive stock update
             $product->stock = $product->stock - $item->quantity;
@@ -265,6 +266,109 @@ class OrderController extends Controller
             return response()->json([
                 'message' => 'An error occurred during confirmation',
                 'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function confirmOrderBrokenACID($order_id)
+    {
+        $user = Auth::guard('api')->user();
+        if (!$user) return response()->json(['message' => 'Unauthorized'], 401);
+
+        $simulateFail = request()->boolean('simulate_fail', false);
+
+        $order = Order::where('id', $order_id)
+            ->where('user_id', $user->id)
+            ->where('status', 'pending')
+            ->first();
+
+        if (!$order) return response()->json(['message' => 'order not found'], 404);
+
+        $items = OrderItems::where('order_id', $order->id)->get();
+        if ($items->isEmpty()) return response()->json(['message' => 'order is empty'], 400);
+
+        // Step 1: deduct stock (no transaction)
+        foreach ($items as $item) {
+            $product = Product::find($item->product_id);
+            if ($product->stock < $item->quantity)
+                return response()->json(['message' => 'not enough stock'], 400);
+            $product->stock -= $item->quantity;
+            $product->save();
+        }
+
+        // Step 2: create payment record
+        Payment::create([
+            'order_id' => $order->id,
+            'amount'   => $order->total_price,
+            'status'   => 'success',
+        ]);
+
+        // Step 3: simulate failure BEFORE updating order status
+        if ($simulateFail) {
+            throw new \Exception('Simulated crash after payment, before order update!');
+        }
+
+        $order->status = 'paid';
+        $order->save();
+
+        return response()->json(['message' => 'order confirmed (broken)'], 200);
+    }
+
+    public function confirmOrderFixedACID($order_id)
+    {
+        $user = Auth::guard('api')->user();
+        if (!$user) return response()->json(['message' => 'Unauthorized'], 401);
+
+        $simulateFail = request()->boolean('simulate_fail', false);
+
+        $order = Order::where('id', $order_id)
+            ->where('user_id', $user->id)
+            ->where('status', 'pending')
+            ->first();
+
+        if (!$order) return response()->json(['message' => 'order not found'], 404);
+
+        $items = OrderItems::where('order_id', $order->id)->get();
+        if ($items->isEmpty()) return response()->json(['message' => 'order is empty'], 400);
+
+        DB::beginTransaction();
+        try {
+            // Step 1: deduct stock
+            foreach ($items as $item) {
+                $product = Product::where('id', $item->product_id)
+                    ->lockForUpdate()
+                    ->first();
+
+                if ($product->stock < $item->quantity) {
+                    DB::rollBack();
+                    return response()->json(['message' => 'not enough stock'], 400);
+                }
+                $product->stock -= $item->quantity;
+                $product->save();
+            }
+
+            // Step 2: create payment record
+            Payment::create([
+                'order_id' => $order->id,
+                'amount'   => $order->total_price,
+                'status'   => 'success',
+            ]);
+
+            // Step 3: simulate failure BEFORE updating order status
+            if ($simulateFail) {
+                throw new \Exception('Simulated crash after payment, before order update!');
+            }
+
+            $order->status = 'paid';
+            $order->save();
+
+            DB::commit();
+            return response()->json(['message' => 'order confirmed safely'], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'message' => 'transaction rolled back',
+                'error'   => $e->getMessage()
             ], 500);
         }
     }
