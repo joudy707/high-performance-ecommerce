@@ -92,3 +92,39 @@ Route::post('/sales/report/generate', function () {
     GenerateDailySalesReport::dispatch();
     return response()->json(['message' => 'Report generation started. Workers are processing chunks in parallel.']);
 });
+
+#Task6
+#broken
+Route::get(
+    '/cache/top-products/broken',
+    [ProductController::class,'topSellingProductsBroken']
+);
+
+Route::get(
+    '/cache/product/broken/{id}',
+    [ProductController::class,'cachedProductBroken']
+
+);
+Route::get('/products-search/broken', [ProductController::class, 'searchFixed']);
+Route::get('/products-search', [ProductController::class, 'searchCache']);
+
+#fixed
+Route::get(
+    '/cache/top-products',
+    [ProductController::class,'topSellingProducts']
+);
+
+Route::get(
+    '/cache/product/{id}',
+    [ProductController::class,'cachedProduct']
+);
+
+Route::get(
+    '/cache/stats',
+    [ProductController::class,'cacheStats']
+);
+
+Route::post(
+    '/cache/clear',
+    [ProductController::class,'clearCache']
+);
