@@ -9,7 +9,10 @@ use App\Http\Controllers\SalesController;
 use App\Jobs\GenerateDailySalesReport;
 use Illuminate\Support\Facades\Cache;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b0b85c52aab7d7a58b89a575eb3af1dcbdc2994e
 Route::get('/health', function () {
     return response()->json([
         'status' => 'ok',
