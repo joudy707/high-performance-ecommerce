@@ -14,6 +14,10 @@ return Application::configure(basePath: dirname(__DIR__))
 
     )
     ->withMiddleware(function (Middleware $middleware): void {
+
+        //AOP
+        $middleware->append(\App\Http\Middleware\PerformanceMonitor::class);
+        
         $middleware->alias([
             'checkAuth' => \App\Http\Middleware\CheckAuthorization::class,
         ]);

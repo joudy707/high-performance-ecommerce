@@ -13,15 +13,17 @@ class UserSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-    {
-        User::factory()->count(50)->create();
+{
+    User::factory()->count(100)->create();
 
-        # مستخدم ثابت للتجريب
-    User::create([
-    'name' => 'Test User',
-    'email' => 'test@example.com',
-    'password' => bcrypt('password'),
-]);
-    }
+    // مستخدم ثابت للتجريب - بس إذا ما موجود
+    User::firstOrCreate(
+        ['email' => 'test@example.com'],
+        [
+            'name' => 'Test User',
+            'password' => bcrypt('password'),
+        ]
+    );
+}
 
 }
