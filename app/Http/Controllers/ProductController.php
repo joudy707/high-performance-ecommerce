@@ -113,9 +113,9 @@ public function searchCache(Request $request)
 
         // التحقق من أن الكاش موجود وليس فارغاً لضمان عدم حدوث تداخل
         if ($cachedResult && is_array($cachedResult)) {
-            try { Redis::incr('search_cache_hits'); } catch (\Throwable $e) {}
+            try { Redis::incr('cache_hits'); } catch (\Throwable $e) {}
             
-            //  تسجيل الـ Hit لـ JMeter
+        
             Log::info("[Benchmark] جلب نتائج البحث من الـ Redis لكلمة: '{$q}'");
 
             return response()->json([
@@ -125,10 +125,10 @@ public function searchCache(Request $request)
                 'data' => $cachedResult,
             ]);
         }
-        try { Redis::incr('search_cache_misses'); } catch (\Throwable $e) {}
+        try { Redis::incr('cache_misses'); } catch (\Throwable $e) {}
     } catch (\Throwable $e) {}
 
-    // في حال الـ Cache Miss: الذهاب للاستعلام الثقيل في الـ DB
+    
     Log::warning("[Benchmark] Cache Miss! استعلام ثقيل من الـ DB للبحث عن كلمة: '{$q}'");
 
 

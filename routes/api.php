@@ -25,37 +25,12 @@ Route::post('/login', [UserController::class, 'login']);
 Route::get('/products', [ProductController::class, 'index'])->middleware('checkAuth:admin');
 Route::get('/products/{product_id}', [ProductController::class, 'show'])->middleware('checkAuth:admin');
 
-
-Route::get('/products', [ProductController::class, 'index'])->middleware('checkAuth:admin');
-Route::get('/products/{product_id}', [ProductController::class, 'show'])->middleware('checkAuth:admin');
-
-
-Route::post('/products', [ProductController::class, 'addProduct']);
-Route::post('/products/{product_id}/stock', [ProductController::class, 'addToStock']);
-
-
-#Task 1
-Route::post('/order/{product_id}', [OrderController::class, 'createOrder']);
-Route::post('/orders/{order_id}/confirm-broken', [OrderController::class, 'confirmOrderBroken']);
-Route::post('/orders/{order_id}/confirm-fixed', [OrderController::class, 'confirmOrderFixed']);
-Route::get('/orders/{order_id}', [OrderController::class, 'showOrder']);
-
-
-
-#Task 1
-Route::post('/order/{product_id}', [OrderController::class, 'createOrder']);
-Route::post('/orders/{order_id}/confirm-broken', [OrderController::class, 'confirmOrderBroken']);
-Route::post('/orders/{order_id}/confirm-fixed', [OrderController::class, 'confirmOrderFixed']);
-Route::get('/orders/{order_id}', [OrderController::class, 'showOrder']);
-
-
-Route::get('/products', [ProductController::class, 'index'])->middleware('checkAuth:admin');
-Route::get('/products/{product_id}', [ProductController::class, 'show'])->middleware('checkAuth:admin');
-
-
 // Admin/product endpoints.
 Route::post('/products', [ProductController::class, 'addProduct']);
 Route::post('/products/{product_id}/stock', [ProductController::class, 'addToStock']);
+
+
+
 
 // Task 1 - correctness/race-condition comparison on order confirmation.
 Route::post('/order/{product_id}', [OrderController::class, 'createOrder']);
@@ -121,40 +96,13 @@ Route::post('/sales/report/generate', function () {
 
 #Task6
 #broken
-Route::get(
-    '/cache/top-products/broken',
-    [ProductController::class,'topSellingProductsBroken']
-);
-
-Route::get(
-    '/cache/product/broken/{id}',
-    [ProductController::class,'cachedProductBroken']
-
-);
+Route::get('/cache/top-products/broken',[ProductController::class,'topSellingProductsBroken']);
+Route::get('/cache/product/broken/{id}',[ProductController::class,'cachedProductBroken']);
 Route::get('/products-search/broken', [ProductController::class, 'searchFixed']);
-Route::get('/products-search', [ProductController::class, 'searchCache']);
-
 #fixed
-Route::get(
-    '/cache/top-products',
-    [ProductController::class,'topSellingProducts']
-);
+Route::get('/cache/top-products',[ProductController::class,'topSellingProducts']);
+Route::get('/products-search', [ProductController::class, 'searchCache']);
+Route::get( '/cache/product/{id}',[ProductController::class,'cachedProduct']);
 
-Route::get(
-    '/cache/product/{id}',
-    [ProductController::class,'cachedProduct']
-);
-
-Route::get(
-    '/cache/stats',
-    [ProductController::class,'cacheStats']
-);
-
-Route::post(
-    '/cache/clear',
-    [ProductController::class,'clearCache']
-);
-
-
-Route::get('/metrics', [App\Http\Controllers\MetricsController::class, 'prometheus']);
-Route::get('/metrics/json', [App\Http\Controllers\MetricsController::class, 'json']);
+Route::get('/cache/stats',[ProductController::class,'cacheStats']);
+Route::post('/cache/clear',[ProductController::class,'clearCache']);

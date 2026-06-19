@@ -14,7 +14,7 @@ class GenerateJmeterData extends Command
 
     public function handle()
     {
-        $csvPath = 'C:\Users\VISION\Desktop\jmeterTest_broken\jmeterTest_broken\users.csv';
+        $csvPath = 'C:\Users\Haidar\Desktop\jmeterTest\users.csv';
 
         if (file_exists($csvPath)) {
             unlink($csvPath);

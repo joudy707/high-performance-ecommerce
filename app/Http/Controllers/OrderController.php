@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Log;
 class OrderController extends Controller
 {
     // add items to cart
-    public function createOrder($product_id)
+      public function createOrder($product_id)
     {
         $product = Product::find($product_id);
 
@@ -30,7 +30,7 @@ class OrderController extends Controller
             ], 404);
         }
 
-        $user = Auth::guard('api')->user();
+        $user = \App\Models\User::first();
 
         if (!$user) {
             return response()->json([
@@ -106,15 +106,9 @@ class OrderController extends Controller
     }
 
 
-    public function confirmOrderBroken($order_id)
+     public function confirmOrderBroken($order_id)
     {
-        $user = Auth::guard('api')->user();
-
-        if (!$user) {
-            return response()->json([
-                'message' => 'Unauthorized'
-            ], 401);
-        }
+        $user = \App\Models\User::first();
 
         // find pending order
         $order = Order::where('id', $order_id)
@@ -161,8 +155,6 @@ class OrderController extends Controller
                 ], 400);
             }
 
-
-
             // naive stock update
             $product->stock = $product->stock - $item->quantity;
             $product->save();
@@ -177,7 +169,6 @@ class OrderController extends Controller
         // confirm order
         $order->status = 'paid';
         $order->save();
-
         return response()->json([
             'message' => 'order confirmed successfully',
             'order_id' => $order->id,
@@ -188,11 +179,7 @@ class OrderController extends Controller
 
     public function confirmOrderFixed($order_id)
     {
-        $user = Auth::guard('api')->user();
-
-        if (!$user) {
-            return response()->json(['message' => 'Unauthorized'], 401);
-        }
+        $user = \App\Models\User::first();
 
         // نتحقق من الطلب وعناصره خارج الترانزاكشن لتخفيف العبء على قاعدة البيانات
         $order = Order::where('id', $order_id)
@@ -269,7 +256,6 @@ class OrderController extends Controller
             ], 500);
         }
     }
-
     public function confirmOrderBrokenACID($order_id)
     {
         $user = Auth::guard('api')->user();
