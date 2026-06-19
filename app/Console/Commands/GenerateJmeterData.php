@@ -8,33 +8,18 @@ use Illuminate\Support\Facades\Hash;
 
 class GenerateJmeterData extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'jmeter:generate';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Generates 100 pristine test users, orders, and products for JMeter stress testing';
 
-    /**
-     * Execute the console command.
-     */
     public function handle()
     {
-        $csvPath = 'C:/Users/Haidar/Desktop/jmeterTest/users.csv';
+        $csvPath = 'C:\Users\VISION\Desktop\jmeterTest_broken\jmeterTest_broken\users.csv';
 
-        // Clear old file
         if (file_exists($csvPath)) {
             unlink($csvPath);
         }
 
-        // Open file and write the headers
         $file = fopen($csvPath, 'w');
         fputcsv($file, ['email', 'password', 'order_id', 'product_id', 'user_id']);
 
@@ -45,11 +30,8 @@ class GenerateJmeterData extends Command
 
         $this->info('Generating 100 pristine test users, orders, and products. Please wait...');
 
-        // We wrap this in a transaction so it runs incredibly fast
         DB::transaction(function () use ($file, &$count, $password, $hashedPassword, $now) {
             for ($i = 1; $i <= 100; $i++) {
-                
-                // 1. Create a brand new User
                 $email = "stresstest_{$now->timestamp}_{$i}@example.com";
                 $userId = DB::table('users')->insertGetId([
                     'name' => "Stress Test User {$i}",
@@ -59,7 +41,6 @@ class GenerateJmeterData extends Command
                     'updated_at' => $now,
                 ]);
 
-                // 2. Create a brand new Product
                 $productId = DB::table('products')->insertGetId([
                     'name' => "Stress Test Product {$i}",
                     'price' => 50.00,
@@ -68,7 +49,6 @@ class GenerateJmeterData extends Command
                     'updated_at' => $now,
                 ]);
 
-                // 3. Create a brand new Order
                 $orderId = DB::table('orders')->insertGetId([
                     'user_id' => $userId,
                     'status' => 'pending',
@@ -77,7 +57,6 @@ class GenerateJmeterData extends Command
                     'updated_at' => $now,
                 ]);
 
-                // 4. Link the Product to the Order
                 DB::table('order_items')->insert([
                     'order_id' => $orderId,
                     'product_id' => $productId,
@@ -87,7 +66,6 @@ class GenerateJmeterData extends Command
                     'updated_at' => $now,
                 ]);
 
-                // 5. Write the sorted row straight into the CSV
                 fputcsv($file, [$email, $password, $orderId, $productId, $userId]);
                 $count++;
             }

@@ -127,6 +127,48 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        'auth' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/auth.log'),
+            'level' => 'debug',
+            'replace_placeholders' => true,
+        ],
+
+        'products' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/products.log'),
+            'level' => 'debug',
+            'replace_placeholders' => true,
+        ],
+
+        'orders' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/orders.log'),
+            'level' => 'debug',
+            'replace_placeholders' => true,
+        ],
+
+        'inventory' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/inventory.log'),
+            'level' => 'debug',
+            'replace_placeholders' => true,
+        ],
+
+        'payments' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/payments.log'),
+            'level' => 'debug',
+            'replace_placeholders' => true,
+        ],
+
+        'benchmark' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/benchmark.log'),
+            'level' => 'debug',
+            'replace_placeholders' => true,
+        ],
+
     ],
 
 ];

@@ -154,3 +154,7 @@ Route::post(
     '/cache/clear',
     [ProductController::class,'clearCache']
 );
+
+
+Route::get('/metrics', [App\Http\Controllers\MetricsController::class, 'prometheus']);
+Route::get('/metrics/json', [App\Http\Controllers\MetricsController::class, 'json']);
