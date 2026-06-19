@@ -71,6 +71,23 @@ Route::post('/orders/{order_id}/confirm-fixed-acid', [OrderController::class, 'c
 // Task 7 - Distributed Lock 
 Route::post('/orders/{order_id}/confirm-broken-distributed', [OrderController::class, 'confirmOrderBrokenDistributed']);
 Route::post('/orders/{order_id}/confirm-fixed-distributed', [OrderController::class, 'confirmOrderFixedDistributed']);
+Route::post('/sales/report/generate-broken-lock', function () {
+    \App\Jobs\GenerateReportBrokenLock::dispatch();
+    return response()->json([
+        'message' => 'Report job dispatched WITHOUT distributed lock.',
+        'server'  => gethostname(),
+        'warning' => 'If two servers hit this simultaneously, the report runs TWICE.',
+    ]);
+});
+
+Route::post('/sales/report/generate-fixed-lock', function () {
+    \App\Jobs\GenerateReportFixedLock::dispatch();
+    return response()->json([
+        'message' => 'Report job dispatched WITH Redis distributed lock.',
+        'server'  => gethostname(),
+        'note'    => 'Only one server will actually generate the report. The other will be skipped.',
+    ]);
+});
 
 // Task 2 - resource-management comparison: add to cart
 Route::post('/cart/{product_id}/add-broken', [CartController::class, 'addToCartBroken']);
