@@ -1,0 +1,201 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1781879071622,1276,  Login,200,OK,Thread Group 1-2,text,true,,637,298,16,16,http://127.0.0.1:8080/api/login,1276,0,38
+1781879071622,1276,  Login,200,OK,Thread Group 1-3,text,true,,637,298,16,16,http://127.0.0.1:8080/api/login,1276,0,38
+1781879071622,1361,  Login,200,OK,Thread Group 1-1,text,true,,637,298,17,17,http://127.0.0.1:8080/api/login,1361,0,38
+1781879071687,1304,  Login,200,OK,Thread Group 1-4,text,true,,637,298,16,16,http://127.0.0.1:8080/api/login,1304,0,2
+1781879071793,1216,  Login,200,OK,Thread Group 1-5,text,true,,637,298,15,15,http://127.0.0.1:8080/api/login,1216,0,1
+1781879071881,1225,  Login,200,OK,Thread Group 1-6,text,true,,637,298,15,15,http://127.0.0.1:8080/api/login,1225,0,2
+1781879072277,1737,  Login,200,OK,Thread Group 1-10,text,true,,637,299,24,24,http://127.0.0.1:8080/api/login,1737,0,2
+1781879072479,1536,  Login,200,OK,Thread Group 1-12,text,true,,637,299,24,24,http://127.0.0.1:8080/api/login,1536,0,2
+1781879072381,1690,  Login,200,OK,Thread Group 1-11,text,true,,637,299,24,24,http://127.0.0.1:8080/api/login,1690,0,1
+1781879072177,1937,  Login,200,OK,Thread Group 1-9,text,true,,637,298,23,23,http://127.0.0.1:8080/api/login,1937,0,2
+1781879072078,2043,  Login,200,OK,Thread Group 1-8,text,true,,637,298,23,23,http://127.0.0.1:8080/api/login,2043,0,2
+1781879071993,2191,  Login,200,OK,Thread Group 1-7,text,true,,637,298,24,24,http://127.0.0.1:8080/api/login,2191,0,2
+1781879072571,2547,  Login,200,OK,Thread Group 1-13,text,true,,637,299,32,32,http://127.0.0.1:8080/api/login,2547,0,1
+1781879072767,2355,  Login,200,OK,Thread Group 1-15,text,true,,637,299,32,32,http://127.0.0.1:8080/api/login,2355,0,1
+1781879072946,2206,Confirm Order broken ACID,200,OK,Thread Group 1-3,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,32,32,http://127.0.0.1:8080/api/orders/5505/confirm-broken-acid,2206,0,0
+1781879072677,2513,  Login,200,OK,Thread Group 1-14,text,true,,637,299,32,32,http://127.0.0.1:8080/api/login,2513,0,2
+1781879072869,2342,  Login,200,OK,Thread Group 1-16,text,true,,637,299,31,31,http://127.0.0.1:8080/api/login,2342,0,1
+1781879072949,2354,Add to Cart broken,201,Created,Thread Group 1-2,text,true,,341,576,32,32,http://127.0.0.1:8080/api/cart/22504/add-broken,2354,0,0
+1781879073107,3111,Add to Cart broken,201,Created,Thread Group 1-6,text,true,,341,576,41,41,http://127.0.0.1:8080/api/cart/22508/add-broken,3111,0,0
+1781879072965,3255,  Login,200,OK,Thread Group 1-17,text,true,,637,299,41,41,http://127.0.0.1:8080/api/login,3254,0,2
+1781879073066,3180,  Login,200,OK,Thread Group 1-18,text,true,,637,299,40,40,http://127.0.0.1:8080/api/login,3180,0,1
+1781879073165,3098,  Login,200,OK,Thread Group 1-19,text,true,,637,299,41,41,http://127.0.0.1:8080/api/login,3098,0,2
+1781879073359,2922,  Login,200,OK,Thread Group 1-21,text,true,,637,299,41,41,http://127.0.0.1:8080/api/login,2922,0,2
+1781879073269,3124,  Login,200,OK,Thread Group 1-20,text,true,,637,299,41,41,http://127.0.0.1:8080/api/login,3124,0,1
+1781879073657,3642,  Login,200,OK,Thread Group 1-24,text,true,,637,299,49,49,http://127.0.0.1:8080/api/login,3642,0,1
+1781879073862,3449,  Login,200,OK,Thread Group 1-26,text,true,,637,299,48,48,http://127.0.0.1:8080/api/login,3449,0,1
+1781879073755,3600,  Login,200,OK,Thread Group 1-25,text,true,,637,299,49,49,http://127.0.0.1:8080/api/login,3600,0,1
+1781879073961,3396,  Login,200,OK,Thread Group 1-27,text,true,,637,299,48,48,http://127.0.0.1:8080/api/login,3396,0,1
+1781879073461,3927,  Login,200,OK,Thread Group 1-22,text,true,,637,299,47,47,http://127.0.0.1:8080/api/login,3927,0,2
+1781879073558,3913,  Login,200,OK,Thread Group 1-23,text,true,,637,299,48,48,http://127.0.0.1:8080/api/login,3913,0,2
+1781879074048,4350,  Login,200,OK,Thread Group 1-28,text,true,,637,299,57,57,http://127.0.0.1:8080/api/login,4350,0,1
+1781879074115,4342,Add to Cart broken,201,Created,Thread Group 1-9,text,true,,341,576,58,58,http://127.0.0.1:8080/api/cart/22511/add-broken,4342,0,0
+1781879074148,4335,  Login,200,OK,Thread Group 1-29,text,true,,637,299,58,58,http://127.0.0.1:8080/api/login,4335,0,2
+1781879074260,4277,  Login,200,OK,Thread Group 1-30,text,true,,637,299,58,58,http://127.0.0.1:8080/api/login,4277,0,2
+1781879074017,4709,Add to Cart broken,201,Created,Thread Group 1-12,text,true,,341,576,59,59,http://127.0.0.1:8080/api/cart/22514/add-broken,4709,0,0
+1781879074123,4603,Confirm Order broken ACID,200,OK,Thread Group 1-8,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,59,59,http://127.0.0.1:8080/api/orders/5510/confirm-broken-acid,4603,0,0
+1781879074445,5053,  Login,200,OK,Thread Group 1-32,text,true,,637,299,67,67,http://127.0.0.1:8080/api/login,5053,0,2
+1781879074549,4998,  Login,200,OK,Thread Group 1-33,text,true,,637,299,68,68,http://127.0.0.1:8080/api/login,4998,0,1
+1781879074754,4824,  Login,200,OK,Thread Group 1-35,text,true,,637,299,68,68,http://127.0.0.1:8080/api/login,4824,0,1
+1781879074841,4775,  Login,200,OK,Thread Group 1-36,text,true,,637,299,67,67,http://127.0.0.1:8080/api/login,4775,0,1
+1781879074367,5457,  Login,200,OK,Thread Group 1-31,text,true,,637,299,69,69,http://127.0.0.1:8080/api/login,5457,0,1
+1781879074655,5169,  Login,200,OK,Thread Group 1-34,text,true,,637,299,69,69,http://127.0.0.1:8080/api/login,5168,0,2
+1781879075155,5296,search,200,OK,Thread Group 1-3,text,true,,2194,513,74,74,http://127.0.0.1:8080/api/products-search?q=Stress,5295,0,0
+1781879075147,5460,  Login,200,OK,Thread Group 1-39,text,true,,637,299,74,74,http://127.0.0.1:8080/api/login,5460,0,2
+1781879075213,5442,Add to Cart broken,201,Created,Thread Group 1-16,text,true,,341,576,75,75,http://127.0.0.1:8080/api/cart/22518/add-broken,5442,0,0
+1781879075037,5655,  Login,200,OK,Thread Group 1-38,text,true,,637,299,75,75,http://127.0.0.1:8080/api/login,5655,0,1
+1781879074940,5763,  Login,200,OK,Thread Group 1-37,text,true,,637,299,75,75,http://127.0.0.1:8080/api/login,5763,0,1
+1781879075120,5717,Confirm Order broken ACID,200,OK,Thread Group 1-13,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,76,76,http://127.0.0.1:8080/api/orders/5515/confirm-broken-acid,5717,0,0
+1781879075304,6077,Top Products,200,OK,Thread Group 1-2,text,true,,1027,507,80,80,http://127.0.0.1:8080/api/cache/top-products,6077,0,0
+1781879075259,6265,  Login,200,OK,Thread Group 1-40,text,true,,637,299,79,79,http://127.0.0.1:8080/api/login,6265,0,2
+1781879075344,6355,  Login,200,OK,Thread Group 1-41,text,true,,637,299,78,78,http://127.0.0.1:8080/api/login,6355,0,2
+1781879075436,6343,  Login,200,OK,Thread Group 1-42,text,true,,637,299,77,77,http://127.0.0.1:8080/api/login,6343,0,2
+1781879075663,6134,  Login,200,OK,Thread Group 1-44,text,true,,637,299,77,77,http://127.0.0.1:8080/api/login,6134,0,2
+1781879076219,5668,Top Products,200,OK,Thread Group 1-6,text,true,,1024,507,76,76,http://127.0.0.1:8080/api/cache/top-products,5668,0,0
+1781879075539,6387,  Login,200,OK,Thread Group 1-43,text,true,,637,299,75,75,http://127.0.0.1:8080/api/login,6387,0,1
+1781879076004,6598,  Login,200,OK,Thread Group 1-48,text,true,,637,299,75,75,http://127.0.0.1:8080/api/login,6598,0,1
+1781879076107,6686,  Login,200,OK,Thread Group 1-49,text,true,,637,299,75,75,http://127.0.0.1:8080/api/login,6686,0,1
+1781879076248,6558,Confirm Order broken ACID,200,OK,Thread Group 1-18,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,75,75,http://127.0.0.1:8080/api/orders/5520/confirm-broken-acid,6558,0,0
+1781879075930,6928,  Login,200,OK,Thread Group 1-47,text,true,,637,299,75,75,http://127.0.0.1:8080/api/login,6928,0,1
+1781879075762,7115,  Login,200,OK,Thread Group 1-45,text,true,,637,299,74,74,http://127.0.0.1:8080/api/login,7115,0,2
+1781879075814,7183,  Login,200,OK,Thread Group 1-46,text,true,,637,299,73,73,http://127.0.0.1:8080/api/login,7183,0,1
+1781879076355,7306,  Login,200,OK,Thread Group 1-51,text,true,,637,299,73,73,http://127.0.0.1:8080/api/login,7306,0,2
+1781879076256,7640,  Login,200,OK,Thread Group 1-50,text,true,,637,299,72,72,http://127.0.0.1:8080/api/login,7640,0,1
+1781879076726,7181,  Login,200,OK,Thread Group 1-55,text,true,,637,299,71,71,http://127.0.0.1:8080/api/login,7181,0,2
+1781879076432,7524,  Login,200,OK,Thread Group 1-52,text,true,,637,299,70,70,http://127.0.0.1:8080/api/login,7524,0,2
+1781879076537,7445,  Login,200,OK,Thread Group 1-53,text,true,,637,299,70,70,http://127.0.0.1:8080/api/login,7445,0,2
+1781879076265,7787,Add to Cart broken,201,Created,Thread Group 1-19,text,true,,341,576,70,70,http://127.0.0.1:8080/api/cart/22521/add-broken,7787,0,0
+1781879076854,7888,  Login,200,OK,Thread Group 1-56,text,true,,637,299,70,70,http://127.0.0.1:8080/api/login,7888,0,2
+1781879077312,7631,Add to Cart broken,201,Created,Thread Group 1-26,text,true,,341,576,70,70,http://127.0.0.1:8080/api/cart/22528/add-broken,7631,0,0
+1781879076620,8356,  Login,200,OK,Thread Group 1-54,text,true,,637,299,70,70,http://127.0.0.1:8080/api/login,8356,0,1
+1781879077041,8007,  Login,200,OK,Thread Group 1-58,text,true,,637,299,69,69,http://127.0.0.1:8080/api/login,8007,0,1
+1781879077140,7925,  Login,200,OK,Thread Group 1-59,text,true,,637,299,69,69,http://127.0.0.1:8080/api/login,7925,0,2
+1781879076954,8196,  Login,200,OK,Thread Group 1-57,text,true,,637,299,69,69,http://127.0.0.1:8080/api/login,8196,0,2
+1781879077472,8176,Confirm Order broken ACID,200,OK,Thread Group 1-23,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,68,68,http://127.0.0.1:8080/api/orders/5525/confirm-broken-acid,8176,0,0
+1781879077389,8657,Add to Cart broken,201,Created,Thread Group 1-22,text,true,,341,576,68,68,http://127.0.0.1:8080/api/cart/22524/add-broken,8657,0,0
+1781879078044,8006,  Login,200,OK,Thread Group 1-68,text,true,,637,299,68,68,http://127.0.0.1:8080/api/login,8006,0,1
+1781879077338,8743,  Login,200,OK,Thread Group 1-61,text,true,,637,299,68,68,http://127.0.0.1:8080/api/login,8742,0,1
+1781879077237,8919,  Login,200,OK,Thread Group 1-60,text,true,,637,299,67,67,http://127.0.0.1:8080/api/login,8918,0,1
+1781879077449,8815,  Login,200,OK,Thread Group 1-62,text,true,,637,299,66,66,http://127.0.0.1:8080/api/login,8815,0,1
+1781879077548,9238,  Login,200,OK,Thread Group 1-63,text,true,,637,299,66,66,http://127.0.0.1:8080/api/login,9238,0,1
+1781879077735,9471,  Login,200,OK,Thread Group 1-65,text,true,,637,299,66,66,http://127.0.0.1:8080/api/login,9471,0,1
+1781879078143,9064,  Login,200,OK,Thread Group 1-69,text,true,,637,299,66,66,http://127.0.0.1:8080/api/login,9064,0,2
+1781879077951,9256,  Login,200,OK,Thread Group 1-67,text,true,,637,299,66,66,http://127.0.0.1:8080/api/login,9256,0,1
+1781879077846,9404,  Login,200,OK,Thread Group 1-66,text,true,,637,299,64,64,http://127.0.0.1:8080/api/login,9404,0,2
+1781879077636,9715,  Login,200,OK,Thread Group 1-64,text,true,,637,299,64,64,http://127.0.0.1:8080/api/login,9715,0,2
+1781879078458,9040,Top Products,200,OK,Thread Group 1-9,text,true,,1027,507,63,63,http://127.0.0.1:8080/api/cache/top-products,9039,0,0
+1781879078399,9737,Confirm Order broken ACID,200,OK,Thread Group 1-28,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,62,62,http://127.0.0.1:8080/api/orders/5530/confirm-broken-acid,9737,0,0
+1781879078335,9971,  Login,200,OK,Thread Group 1-71,text,true,,637,299,62,62,http://127.0.0.1:8080/api/login,9971,0,2
+1781879078236,10087,  Login,200,OK,Thread Group 1-70,text,true,,637,299,61,61,http://127.0.0.1:8080/api/login,10087,0,2
+1781879078548,9780,  Login,200,OK,Thread Group 1-73,text,true,,637,299,60,60,http://127.0.0.1:8080/api/login,9780,0,2
+1781879078450,10000,  Login,200,OK,Thread Group 1-72,text,true,,637,299,60,60,http://127.0.0.1:8080/api/login,10000,0,2
+1781879078744,9849,  Login,200,OK,Thread Group 1-75,text,true,,637,299,60,60,http://127.0.0.1:8080/api/login,9848,0,2
+1781879078727,10151,Top Products,200,OK,Thread Group 1-12,text,true,,1027,507,59,59,http://127.0.0.1:8080/api/cache/top-products,10151,0,0
+1781879078727,10296,search,200,OK,Thread Group 1-8,text,true,,2191,513,58,58,http://127.0.0.1:8080/api/products-search?q=Stress,10296,0,0
+1781879079330,10236,  Login,200,OK,Thread Group 1-81,text,true,,637,299,57,57,http://127.0.0.1:8080/api/login,10236,0,1
+1781879078637,10928,  Login,200,OK,Thread Group 1-74,text,true,,637,299,57,57,http://127.0.0.1:8080/api/login,10928,0,2
+1781879078485,11126,Add to Cart broken,201,Created,Thread Group 1-29,text,true,,341,576,55,55,http://127.0.0.1:8080/api/cart/22531/add-broken,11126,0,0
+1781879078828,10871,  Login,200,OK,Thread Group 1-76,text,true,,637,299,55,55,http://127.0.0.1:8080/api/login,10871,0,2
+1781879079140,10812,  Login,200,OK,Thread Group 1-79,text,true,,637,299,55,55,http://127.0.0.1:8080/api/login,10812,0,1
+1781879078929,11178,  Login,200,OK,Thread Group 1-77,text,true,,637,299,55,55,http://127.0.0.1:8080/api/login,11178,0,1
+1781879079424,11215,  Login,200,OK,Thread Group 1-82,text,true,,637,299,54,54,http://127.0.0.1:8080/api/login,11215,0,1
+1781879079041,11599,  Login,200,OK,Thread Group 1-78,text,true,,637,299,54,54,http://127.0.0.1:8080/api/login,11599,0,1
+1781879079229,11462,  Login,200,OK,Thread Group 1-80,text,true,,637,299,54,54,http://127.0.0.1:8080/api/login,11462,0,2
+1781879079830,10950,  Login,200,OK,Thread Group 1-86,text,true,,637,299,53,53,http://127.0.0.1:8080/api/login,10950,0,1
+1781879079549,11319,Confirm Order broken ACID,200,OK,Thread Group 1-33,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,53,53,http://127.0.0.1:8080/api/orders/5535/confirm-broken-acid,11319,0,0
+1781879079735,11431,  Login,200,OK,Thread Group 1-85,text,true,,637,299,53,53,http://127.0.0.1:8080/api/login,11431,0,1
+1781879080025,11686,  Login,200,OK,Thread Group 1-88,text,true,,637,299,52,52,http://127.0.0.1:8080/api/login,11686,0,1
+1781879079617,12192,Add to Cart broken,201,Created,Thread Group 1-36,text,true,,341,576,52,52,http://127.0.0.1:8080/api/cart/22538/add-broken,12192,0,0
+1781879079930,11927,  Login,200,OK,Thread Group 1-87,text,true,,637,299,52,52,http://127.0.0.1:8080/api/login,11927,0,2
+1781879079499,12389,Add to Cart broken,201,Created,Thread Group 1-32,text,true,,341,576,51,51,http://127.0.0.1:8080/api/cart/22534/add-broken,12389,0,0
+1781879080127,11827,  Login,200,OK,Thread Group 1-89,text,true,,637,299,51,51,http://127.0.0.1:8080/api/login,11827,0,1
+1781879080236,12019,  Login,200,OK,Thread Group 1-90,text,true,,637,299,51,51,http://127.0.0.1:8080/api/login,12018,0,1
+1781879080636,12186,  Login,200,OK,Thread Group 1-94,text,true,,637,299,50,50,http://127.0.0.1:8080/api/login,12186,0,2
+1781879079638,13261,  Login,200,OK,Thread Group 1-84,text,true,,637,299,49,49,http://127.0.0.1:8080/api/login,13261,0,2
+1781879080531,12420,  Login,200,OK,Thread Group 1-93,text,true,,637,299,48,48,http://127.0.0.1:8080/api/login,12420,0,1
+1781879079525,13444,  Login,200,OK,Thread Group 1-83,text,true,,637,299,48,48,http://127.0.0.1:8080/api/login,13444,0,2
+1781879080432,12596,  Login,200,OK,Thread Group 1-92,text,true,,637,299,48,48,http://127.0.0.1:8080/api/login,12596,0,1
+1781879080335,13003,  Login,200,OK,Thread Group 1-91,text,true,,637,299,48,48,http://127.0.0.1:8080/api/login,13003,0,1
+1781879080838,12540,search,200,OK,Thread Group 1-13,text,true,,2191,513,47,47,http://127.0.0.1:8080/api/products-search?q=Stress,12540,0,0
+1781879080693,13214,Confirm Order broken ACID,200,OK,Thread Group 1-38,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,46,46,http://127.0.0.1:8080/api/orders/5540/confirm-broken-acid,13214,0,0
+1781879080735,13313,  Login,200,OK,Thread Group 1-95,text,true,,637,299,46,46,http://127.0.0.1:8080/api/login,13313,0,1
+1781879080932,13181,  Login,200,OK,Thread Group 1-97,text,true,,637,299,45,45,http://127.0.0.1:8080/api/login,13181,0,2
+1781879080608,13519,Add to Cart broken,201,Created,Thread Group 1-39,text,true,,341,576,44,44,http://127.0.0.1:8080/api/cart/22541/add-broken,13519,0,0
+1781879081034,13382,  Login,200,OK,Thread Group 1-98,text,true,,637,299,44,44,http://127.0.0.1:8080/api/login,13382,0,1
+1781879081781,12643,Add to Cart broken,201,Created,Thread Group 1-42,text,true,,341,576,44,44,http://127.0.0.1:8080/api/cart/22544/add-broken,12643,0,0
+1781879080656,14131,Top Products,200,OK,Thread Group 1-16,text,true,,1027,507,44,44,http://127.0.0.1:8080/api/cache/top-products,14131,0,0
+1781879080832,14139,  Login,200,OK,Thread Group 1-96,text,true,,637,299,43,43,http://127.0.0.1:8080/api/login,14139,0,1
+1781879082807,12189,search,200,OK,Thread Group 1-18,text,true,,2191,513,43,43,http://127.0.0.1:8080/api/products-search?q=Stress,12188,0,0
+1781879081927,13158,Confirm Order broken ACID,200,OK,Thread Group 1-43,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,42,42,http://127.0.0.1:8080/api/orders/5545/confirm-broken-acid,13158,0,0
+1781879081231,13953,  Login,200,OK,Thread Group 1-100,text,true,,637,300,42,42,http://127.0.0.1:8080/api/login,13953,0,2
+1781879082794,12673,Add to Cart broken,201,Created,Thread Group 1-49,text,true,,341,576,41,41,http://127.0.0.1:8080/api/cart/22551/add-broken,12673,0,0
+1781879082603,13214,Confirm Order broken ACID,200,OK,Thread Group 1-48,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,41,41,http://127.0.0.1:8080/api/orders/5550/confirm-broken-acid,13214,0,0
+1781879084944,10926,Top Products,200,OK,Thread Group 1-26,text,true,,1027,507,41,41,http://127.0.0.1:8080/api/cache/top-products,10926,0,0
+1781879081133,14926,  Login,200,OK,Thread Group 1-99,text,true,,637,299,40,40,http://127.0.0.1:8080/api/login,14926,0,1
+1781879082998,13084,Add to Cart broken,201,Created,Thread Group 1-46,text,true,,341,576,40,40,http://127.0.0.1:8080/api/cart/22548/add-broken,13084,0,0
+1781879084053,12119,Top Products,200,OK,Thread Group 1-19,text,true,,1027,507,40,40,http://127.0.0.1:8080/api/cache/top-products,12119,0,0
+1781879083957,12259,Add to Cart broken,201,Created,Thread Group 1-52,text,true,,341,576,39,39,http://127.0.0.1:8080/api/cart/22554/add-broken,12259,0,0
+1781879086047,10355,Top Products,200,OK,Thread Group 1-22,text,true,,1024,507,39,39,http://127.0.0.1:8080/api/cache/top-products,10355,0,0
+1781879083983,12867,Confirm Order broken ACID,200,OK,Thread Group 1-53,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,38,38,http://127.0.0.1:8080/api/orders/5555/confirm-broken-acid,12867,0,0
+1781879088138,8814,search,200,OK,Thread Group 1-28,text,true,,2191,513,38,38,http://127.0.0.1:8080/api/products-search?q=Stress,8814,0,0
+1781879086051,11039,Confirm Order broken ACID,200,OK,Thread Group 1-68,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,37,37,http://127.0.0.1:8080/api/orders/5570/confirm-broken-acid,11039,0,0
+1781879085049,12042,Confirm Order broken ACID,200,OK,Thread Group 1-58,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,37,37,http://127.0.0.1:8080/api/orders/5560/confirm-broken-acid,12042,0,0
+1781879086265,11077,Add to Cart broken,201,Created,Thread Group 1-62,text,true,,341,576,37,37,http://127.0.0.1:8080/api/cart/22564/add-broken,11077,0,0
+1781879085649,11767,search,200,OK,Thread Group 1-23,text,true,,2191,513,37,37,http://127.0.0.1:8080/api/products-search?q=Stress,11766,0,0
+1781879084743,12682,Add to Cart broken,201,Created,Thread Group 1-56,text,true,,341,576,36,36,http://127.0.0.1:8080/api/cart/22558/add-broken,12682,0,0
+1781879089953,8129,Add to Cart broken,201,Created,Thread Group 1-79,text,true,,341,576,36,36,http://127.0.0.1:8080/api/cart/22581/add-broken,8129,0,0
+1781879085066,13184,Add to Cart broken,201,Created,Thread Group 1-59,text,true,,341,576,36,36,http://127.0.0.1:8080/api/cart/22561/add-broken,13184,0,0
+1781879087208,11092,Add to Cart broken,201,Created,Thread Group 1-69,text,true,,341,576,36,36,http://127.0.0.1:8080/api/cart/22571/add-broken,11092,0,0
+1781879088452,10082,Add to Cart broken,201,Created,Thread Group 1-72,text,true,,341,576,36,36,http://127.0.0.1:8080/api/cart/22574/add-broken,10082,0,0
+1781879086788,11830,Confirm Order broken ACID,200,OK,Thread Group 1-63,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,36,36,http://127.0.0.1:8080/api/orders/5565/confirm-broken-acid,11830,0,0
+1781879088330,10290,Confirm Order broken ACID,200,OK,Thread Group 1-73,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,36,36,http://127.0.0.1:8080/api/orders/5575/confirm-broken-acid,10290,0,0
+1781879090870,7772,search,200,OK,Thread Group 1-33,text,true,,2191,513,36,36,http://127.0.0.1:8080/api/products-search?q=Stress,7771,0,0
+1781879089613,9700,Top Products,200,OK,Thread Group 1-29,text,true,,1027,507,35,35,http://127.0.0.1:8080/api/cache/top-products,9700,0,0
+1781879087253,12127,Add to Cart broken,201,Created,Thread Group 1-66,text,true,,341,576,34,34,http://127.0.0.1:8080/api/cart/22568/add-broken,12127,0,0
+1781879090642,8820,Add to Cart broken,201,Created,Thread Group 1-82,text,true,,341,576,34,34,http://127.0.0.1:8080/api/cart/22584/add-broken,8820,0,0
+1781879091889,8091,Top Products,200,OK,Thread Group 1-32,text,true,,1027,507,34,34,http://127.0.0.1:8080/api/cache/top-products,8091,0,0
+1781879089701,10379,Add to Cart broken,201,Created,Thread Group 1-76,text,true,,341,576,33,33,http://127.0.0.1:8080/api/cart/22578/add-broken,10379,0,0
+1781879090782,9487,Add to Cart broken,201,Created,Thread Group 1-86,text,true,,341,576,33,33,http://127.0.0.1:8080/api/cart/22588/add-broken,9487,0,0
+1781879093029,7239,Add to Cart broken,201,Created,Thread Group 1-92,text,true,,341,576,33,33,http://127.0.0.1:8080/api/cart/22594/add-broken,7239,0,0
+1781879090642,9766,Confirm Order broken ACID,200,OK,Thread Group 1-78,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,33,33,http://127.0.0.1:8080/api/orders/5580/confirm-broken-acid,9766,0,0
+1781879091712,8786,Confirm Order broken ACID,200,OK,Thread Group 1-88,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,33,33,http://127.0.0.1:8080/api/orders/5590/confirm-broken-acid,8786,0,0
+1781879095468,5547,Top Products,200,OK,Thread Group 1-49,text,true,,1027,507,33,33,http://127.0.0.1:8080/api/cache/top-products,5547,0,0
+1781879094425,6633,Top Products,200,OK,Thread Group 1-42,text,true,,1024,507,32,32,http://127.0.0.1:8080/api/cache/top-products,6633,0,0
+1781879092952,8117,Confirm Order broken ACID,200,OK,Thread Group 1-93,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,31,31,http://127.0.0.1:8080/api/orders/5595/confirm-broken-acid,8117,0,0
+1781879092970,8163,Confirm Order broken ACID,200,OK,Thread Group 1-83,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,31,31,http://127.0.0.1:8080/api/orders/5585/confirm-broken-acid,8163,0,0
+1781879091809,9379,Top Products,200,OK,Thread Group 1-36,text,true,,1027,507,31,31,http://127.0.0.1:8080/api/cache/top-products,9379,0,0
+1781879091955,9454,Add to Cart broken,201,Created,Thread Group 1-89,text,true,,341,576,30,30,http://127.0.0.1:8080/api/cart/22591/add-broken,9454,0,0
+1781879095086,6549,search,200,OK,Thread Group 1-43,text,true,,2191,513,30,30,http://127.0.0.1:8080/api/products-search?q=Stress,6549,0,0
+1781879093908,7784,search,200,OK,Thread Group 1-38,text,true,,2191,513,29,29,http://127.0.0.1:8080/api/products-search?q=Stress,7783,0,0
+1781879094128,7648,Top Products,200,OK,Thread Group 1-39,text,true,,1027,507,28,28,http://127.0.0.1:8080/api/cache/top-products,7648,0,0
+1781879096060,6009,Add to Cart broken,201,Created,Thread Group 1-99,text,true,,341,576,27,27,http://127.0.0.1:8080/api/cart/22601/add-broken,6009,0,0
+1781879094417,7809,Confirm Order broken ACID,200,OK,Thread Group 1-98,text,false,"Test failed: text expected to contain /""message"":""order confirmed safely""/",320,540,27,27,http://127.0.0.1:8080/api/orders/5600/confirm-broken-acid,7809,0,0
+1781879095818,6450,search,200,OK,Thread Group 1-48,text,true,,2191,513,27,27,http://127.0.0.1:8080/api/products-search?q=Stress,6450,0,0
+1781879096217,6127,Top Products,200,OK,Thread Group 1-52,text,true,,1027,507,26,26,http://127.0.0.1:8080/api/cache/top-products,6127,0,0
+1781879094972,7522,Add to Cart broken,201,Created,Thread Group 1-96,text,true,,341,576,25,25,http://127.0.0.1:8080/api/cart/22598/add-broken,7522,0,0
+1781879097425,5088,Top Products,200,OK,Thread Group 1-56,text,true,,1027,507,25,25,http://127.0.0.1:8080/api/cache/top-products,5088,0,0
+1781879097091,5568,search,200,OK,Thread Group 1-68,text,true,,2191,513,24,24,http://127.0.0.1:8080/api/products-search?q=Stress,5568,0,0
+1781879096851,5942,search,200,OK,Thread Group 1-53,text,true,,2191,513,23,23,http://127.0.0.1:8080/api/products-search?q=Stress,5942,0,0
+1781879097092,5746,search,200,OK,Thread Group 1-58,text,true,,2191,513,22,22,http://127.0.0.1:8080/api/products-search?q=Stress,5746,0,0
+1781879098300,4607,Top Products,200,OK,Thread Group 1-69,text,true,,1024,507,21,21,http://127.0.0.1:8080/api/cache/top-products,4607,0,0
+1781879096083,6983,Top Products,200,OK,Thread Group 1-46,text,true,,1024,507,20,20,http://127.0.0.1:8080/api/cache/top-products,6983,0,0
+1781879098618,4494,search,200,OK,Thread Group 1-63,text,true,,2191,513,19,19,http://127.0.0.1:8080/api/products-search?q=Stress,4494,0,0
+1781879098082,5110,Top Products,200,OK,Thread Group 1-79,text,true,,1024,507,18,18,http://127.0.0.1:8080/api/cache/top-products,5110,0,0
+1781879098251,5092,Top Products,200,OK,Thread Group 1-59,text,true,,1024,507,17,17,http://127.0.0.1:8080/api/cache/top-products,5092,0,0
+1781879098534,4833,Top Products,200,OK,Thread Group 1-72,text,true,,1024,507,16,16,http://127.0.0.1:8080/api/cache/top-products,4833,0,0
+1781879099462,3982,Top Products,200,OK,Thread Group 1-82,text,true,,1024,507,15,15,http://127.0.0.1:8080/api/cache/top-products,3982,0,0
+1781879097343,6277,Top Products,200,OK,Thread Group 1-62,text,true,,1024,507,14,14,http://127.0.0.1:8080/api/cache/top-products,6277,0,0
+1781879100084,3558,Top Products,200,OK,Thread Group 1-76,text,true,,1024,507,13,13,http://127.0.0.1:8080/api/cache/top-products,3558,0,0
+1781879099379,4329,Top Products,200,OK,Thread Group 1-66,text,true,,1024,507,12,12,http://127.0.0.1:8080/api/cache/top-products,4329,0,0
+1781879100269,3614,Top Products,200,OK,Thread Group 1-92,text,true,,1024,507,11,11,http://127.0.0.1:8080/api/cache/top-products,3614,0,0
+1781879101133,2790,search,200,OK,Thread Group 1-83,text,true,,2191,513,10,10,http://127.0.0.1:8080/api/products-search?q=Stress,2790,0,0
+1781879101070,2942,search,200,OK,Thread Group 1-93,text,true,,2191,513,9,9,http://127.0.0.1:8080/api/products-search?q=Stress,2942,0,0
+1781879098619,5569,search,200,OK,Thread Group 1-73,text,true,,2191,513,8,8,http://127.0.0.1:8080/api/products-search?q=Stress,5569,0,0
+1781879100269,3929,Top Products,200,OK,Thread Group 1-86,text,true,,1024,507,7,7,http://127.0.0.1:8080/api/cache/top-products,3929,0,0
+1781879100408,3870,search,200,OK,Thread Group 1-78,text,true,,2191,513,6,6,http://127.0.0.1:8080/api/products-search?q=Stress,3869,0,0
+1781879101410,3019,Top Products,200,OK,Thread Group 1-89,text,true,,1024,507,5,5,http://127.0.0.1:8080/api/cache/top-products,3019,0,0
+1781879102069,2388,Top Products,200,OK,Thread Group 1-99,text,true,,1024,507,4,4,http://127.0.0.1:8080/api/cache/top-products,2388,0,0
+1781879102227,2376,search,200,OK,Thread Group 1-98,text,true,,2191,513,3,3,http://127.0.0.1:8080/api/products-search?q=Stress,2376,0,0
+1781879100499,4256,search,200,OK,Thread Group 1-88,text,true,,2191,513,2,2,http://127.0.0.1:8080/api/products-search?q=Stress,4256,0,0
+1781879102495,2460,Top Products,200,OK,Thread Group 1-96,text,true,,1024,507,1,1,http://127.0.0.1:8080/api/cache/top-products,2460,0,0
